@@ -1383,6 +1383,11 @@ impl Client {
 
         *req.headers_mut() = headers.clone();
 
+        println!("request headers:");
+        for (key, value) in req.headers() {
+            println!("    ({}, {:?})", key, value);
+        }
+
         let in_flight = self.inner.hyper.request(req);
 
         Pending {
